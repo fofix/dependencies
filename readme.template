@@ -1,0 +1,15 @@
+Win32 dependency pack
+=====================
+
+This is an archive of precompiled libs for python extensions on Windows.
+
+
+Usage
+-----
+
+Unzip this pack in `win32`.
+
+
+URLs
+----
+
