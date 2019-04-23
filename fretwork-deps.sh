@@ -318,11 +318,11 @@ package_dist()
     rm -rf dist/deps/lib/{*.la,*.def}
 
     # generate .def files
-    python2 makedefs.py dist/deps/lib dist/deps/bin "i686-w64-mingw32-dlltool -I"
+    python2 makedefs.py dist/deps/lib dist/deps/bin "${PLATFORM}-dlltool -I"
 
     # strip binaries and libs
-    i686-w64-mingw32-strip --strip-all dist/deps/bin/*.exe dist/deps/bin/*.dll
-    i686-w64-mingw32-strip --strip-debug dist/deps/lib/*.lib dist/deps/lib/*.a
+    ${PLATFORM}-strip --strip-all dist/deps/bin/*.exe dist/deps/bin/*.dll
+    ${PLATFORM}-strip --strip-debug dist/deps/lib/*.lib dist/deps/lib/*.a
 
     # make a README
     cat readme.template dist/deps/URLs > dist/README.md
@@ -330,7 +330,7 @@ package_dist()
 
     # create the tarball
     cd dist
-    tarball="fretwork-win32-deppack-`date +%Y%m%d`.tar.gz"
+    tarball="fretwork-${WIN}-deppack-`date +%Y%m%d`.tar.gz"
     tar zcf ../${tarball} *
     cd ..
 

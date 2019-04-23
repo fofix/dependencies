@@ -5,13 +5,15 @@ matrix:
               - PROJECT=fretwork
               - ARCH=i686
               - MINGW=w64
+              - WIN=win32
               - PLATFORM="${ARCH}-${MINGW}-mingw32"
-        - os: linux
-          env:
-              - PROJECT=fretwork
-              - ARCH=i686
-              - MINGW=w64
-              - PLATFORM="${ARCH}-${MINGW}-mingw32"
+        #- os: linux
+        #  env:
+        #      - PROJECT=fretwork
+        #      - ARCH=x86_64
+        #      - MINGW=w64
+        #      - WIN=win64
+        #      - PLATFORM="${ARCH}-${MINGW}-mingw32"
 
 install:
     - sudo apt-get install -y
