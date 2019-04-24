@@ -1,5 +1,8 @@
 # Windows dependencies
 
+[![Build Status](https://travis-ci.org/fofix/win-dependencies.svg?branch=master)](https://travis-ci.org/fofix/win-dependencies)
+
+
 This repository creates zip files containing dependencies for FoFiX and fretwork
 in Windows. Dependencies are downloaded in Linux and cross-compiled with MinGW.
 
