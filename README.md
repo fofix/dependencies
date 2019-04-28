@@ -15,6 +15,7 @@ Here are versions of dependencies:
 - `win-iconv` 0.0.8
 - `zlib` 1.2.11
 - `Glib` 2.34.3
+- `pkg-config` 0.28
 - `libogg` 1.3.0
 - `libtheora` 1.2.0alpha1
 - `libvorbis` 1.3.3

@@ -48,6 +48,13 @@ build_workspace()
     mkdir -p $PREFIX
     mkdir -p "${PREFIX}/bin" "${PREFIX}/lib" "${PREFIX}/include"
     mkdir -p "${PREFIX}/lib/pkgconfig"
+
+    # pkg-config wrapper
+    cat >"${PREFIX}"/bin/pkg-config <<EOF
+#!/bin/sh -e
+exec env PKG_CONFIG_LIBDIR='$PREFIX'/lib/pkgconfig '`which pkg-config`' "\$@"
+EOF
+    chmod -v 0755 "$PREFIX"/bin/pkg-config
 }
 
 
@@ -151,6 +158,27 @@ build_glib()
 
     # copy files
     cp -v glib-2.0.pc gthread-2.0.pc ${PREFIX}/lib/pkgconfig
+    cd ..
+}
+
+
+#
+# Build pkg-config
+#
+build_pkgconfig()
+{
+    pkgconfig_version="0.28"
+    info "Build pkg-config ${pkgconfig_version}"
+
+    # download
+    download http://pkgconfig.freedesktop.org/releases/pkg-config-${pkgconfig_version}.tar.gz
+    tar zxf pkg-config-${pkgconfig_version}.tar.gz
+
+    # compile
+    cd pkg-config-${pkgconfig_version}
+    ./configure $COMMON_AUTOCONF_FLAGS
+    make
+    make install
     cd ..
 }
 
@@ -349,6 +377,7 @@ main()
     build_iconv
     build_zlib
     build_glib
+    build_pkgconfig
     build_libogg
     build_libtheora
     build_libvorbis
