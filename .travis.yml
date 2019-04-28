@@ -27,6 +27,7 @@ script:
     - build_iconv
     - build_zlib
     - build_glib
+    - build_pkgconfig
     - build_libogg
     - build_libtheora
     - build_libvorbis
