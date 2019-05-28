@@ -126,6 +126,27 @@ build_gettext()
 
 
 #
+# Build libffi
+#
+build_libffi()
+{
+    libffi_version="3.0.12"
+    info "Build libffi ${libffi_version}"
+
+    # download
+    download ftp://sourceware.org/pub/libffi/libffi-${libffi_version}.tar.gz
+    tar zxf libffi-${libffi_version}.tar.gz
+
+    # compile
+    cd libffi-${libffi_version}
+    ./configure $COMMON_AUTOCONF_FLAGS --enable-portable-binary
+    make
+    make install
+    cd ..
+}
+
+
+#
 # Build GLib
 #
 build_glib()
@@ -134,6 +155,7 @@ build_glib()
     # deps
     #
     build_gettext
+    build_libffi
 
     #
     # glib
