@@ -16,6 +16,7 @@ Here are versions of dependencies:
 - `zlib` 1.2.11
 - `Glib` 2.34.3
 - `pkg-config` 0.28
+- `libffi` 3.0.12
 - `libogg` 1.3.0
 - `libtheora` 1.2.0alpha1
 - `libvorbis` 1.3.3
